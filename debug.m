@@ -1,15 +1,15 @@
-%Bharavi Misra
+%Anshu Nunemunthala - Wooyong Shin
 
-%loading this file defines imrgb and layerResults
-load 'debuggingTest.mat'
+%defines imrgb and layerResults
+load './debuggingTest.mat'
 
-%loading this file defines filterbanks and biasvectors
-load 'CNNparameters.mat'
+%defines filterbanks and biasvectors
+load './CNNparameters.mat'
 
-%loading this file defines imageset, trueclass, and classlabels
-load 'cifar10testdata.mat'
+%defines imageset, trueclass, and classlabels
+load './cifar10testdata.mat'
 
-%sample code to verify which layers have filters and biases
+%dummy code to verify which layers have filters and biases
 for d = 1:length(layertypes)
     fprintf('layer %d is of type %s\n',d,layertypes{d});
     filterbank = filterbanks{d};
@@ -77,7 +77,7 @@ for d=1:length(layertypes)
 
 end
 
-%sample code to show image and access expected results
+%dummy code to show image and access expected results
 %figure; imagesc(imrgb); truesize(gcf,[64 64]);
 for d = 1:length(layerResults)
     result = layerResults{d};
@@ -86,15 +86,18 @@ for d = 1:length(layerResults)
     fprintf('layer %d output is size %d x %d x %d\n', ...
         d,size(result,1),size(result,2),size(result,3));
 end
+
 %find expected most probable class
 expected_classprobvec = squeeze(layerResults{end});
 [expected_maxprob,expected_maxclass] = max(expected_classprobvec);
+
 %note, classlabels is defined in 'cifar10testdata.mat'
 fprintf('expected estimated class is %s with probability %.4f\n',...
     classlabels{expected_maxclass},expected_maxprob);
+
 %find computed most probable class
 computed_classprobvec = squeeze(computed);
 [computed_maxprob,computed_maxclass] = max(computed_classprobvec);
-%note, classlabels is defined in 'cifar10testdata.mat'
+
 fprintf('expected computed class is %s with probability %.4f\n',...
     classlabels{computed_maxclass},computed_maxprob);

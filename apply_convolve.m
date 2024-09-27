@@ -1,4 +1,4 @@
-%Bharavi Misra
+%Anshu Nunemunthala
 function [ outarray ] = apply_convolve(inarray, filterbank, biasvals)
     outarray = zeros(size(inarray,1), size(inarray,2), size(filterbank, 4));
     for i = 1:size(outarray,3)

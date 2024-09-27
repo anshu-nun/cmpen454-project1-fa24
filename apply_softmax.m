@@ -1,4 +1,4 @@
-%Bharavi Misra
+%June Kim
 function [outarray] = apply_softmax(inarray)
     outarray = zeros(1, 1, size(inarray,3));
     alpha = max(inarray);

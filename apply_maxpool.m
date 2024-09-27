@@ -1,4 +1,4 @@
-%Andrew Ho
+%June Kim
 function [ outarray ] = apply_maxpool(inarray)
     [N, M, D] = size(inarray);
     outarray = zeros(N/2, M/2, D);
